@@ -28,7 +28,11 @@ public class UserDaoImpl implements UserDao {
 	public void saveUserwithaddress(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		//Transaction transaction=session.beginTransaction();
-		session.saveOrUpdate(user);
+		try {
+		session.saveOrUpdate(user);}
+		catch(Exception e) {
+			System.out.println("not saved");
+		}
 		//user=getuserbyid(user.getId());
 		//transaction.commit();
 		

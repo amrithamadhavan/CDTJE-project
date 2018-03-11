@@ -30,28 +30,32 @@
 		<table class="table table-bordered">
 			<tr>
 				
-				<th width="120">quantity</th>
-				<th width="200">subtotal</th>
-				<th width="80">Productid</th>
+				<th width="120">ProductName</th>
+				<th width="200">ProductDescription</th>
+				<th width="80">Price</th>
+				<th width="80">Quantity</th>
+				<th width="80">subtotal</th>
 				<th width="120">image</th>
+				<!-- <th width="100">Delete</th>-->
 				
 				
 			</tr>
 			<c:forEach items="${cartitemslist}" var="cartitem">
 				<tr>
-					
+					<td>${cartitem.getProduct().getPname()}</td>
+					<td>${cartitem.getProduct().getDescription()}</td>
+					<td>${cartitem.getProduct().getCost()}</td>
 					<td>${cartitem.quantity}</td>
 					<td>${cartitem.subtotal}</td>
-					<td>${cartitem.getProduct().getId()}</td>
+					
 					<td><img src="${pageContext.request.contextPath}/resources/images/${cartitem.getProduct().getId()}.jpg"></td>
-					
-					
-				</tr>
+					<!-- <td><a class="btn btn-info btn-sm" href="<c:url value='/user/removeitem/${cartitem.getProduct().getId()}'/>">Remove</a></td>-->
+					</tr>
 			</c:forEach>
 			
 		</table>
-	</c:if>
-	<h3>The grand total is ${cart.getGrandtotal()}</h3>
-	<a class="btn btn-info btn-sm" href=${pageContext.request.contextPath}/user/product>Continue Shopping</a>
-	<a class="btn btn-info btn-sm" href=${pageContext.request.contextPath}/user/deletecart>Buy Now</a>
+	</c:if><br><br><br>
+	<center><h3><b>The grand total is ${cart.getGrandtotal()}</b></h3><br>
+	<a class="btn btn-info btn-lg" href=${pageContext.request.contextPath}/user/product>Continue Shopping</a>
+	<a class="btn btn-info btn-lg" href=${pageContext.request.contextPath}/user/deletecart>Buy Now</a></center>
 </body>

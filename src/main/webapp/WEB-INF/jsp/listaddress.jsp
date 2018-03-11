@@ -6,9 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+#id1{
+padding-left: 500px;
+}
+#id2{
+padding-left: 625px;
+}
+</style>
 </head>
-<body><!-- ${addresses} -->
+<body>
 <c:forEach items="${user.getAddresses()}" var="address">
+<div id="id1">
 <table class="table table-bordered" style="width:300px">
 
 <tr><td>DOOR NO:</td><td>${address.getDoorno()}</td></tr>
@@ -18,8 +27,11 @@
 <tr><td>PIN CODE:</td><td>${address.getPincode()}</td></tr>
 
 </table>
+</div>
+<div id="id2">
 <!-- <a class="btn btn-info btn-sm" href=${pageContext.request.contextPath}/>DELIVER</a>-->
 <a class="btn btn-info btn-sm" href=${flowExecutionUrl}&_eventId_deliver?id=${address.getId()}>DELIVER</a>
+</div>
 </c:forEach>
 </body>
 </html>

@@ -49,14 +49,13 @@ width:400
 
 <body bgcolor="gray" class="container">
 <!-- <button class="btn btn-danger"><a href="<c:url value='/display' />">Display</a></button>-->
-	
+	<h2>Edit Product Details</h2>
 	
 	<form:form action="${pageContext.request.contextPath}/admin/editprodct" modelAttribute="product">
 		<table class="table">
-		<tr class="form-group">
-				<td>Product id:</td>
-				<td><form:input type="text" name="productId" class="form-control" value="${productList.id}" path="id"/></td>
-			</tr>
+		
+				<form:input type="hidden" name="productId" class="form-control" value="${productList.id}" path="id"/>
+			
 		
 			<tr class="form-group">
 				<td>Product name:</td>

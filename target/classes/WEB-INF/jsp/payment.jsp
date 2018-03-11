@@ -8,8 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>choose address</h2>
-<a  class="btn btn-info btn-sm" href="${flowExecutionUrl}&_eventId_Existing">Existing</a>
+<br><br><br><br>
+<center><h1>Choose Shipping Address..!</h1><br>
+<a  class="btn btn-info btn-lg" href="${flowExecutionUrl}&_eventId_Existing">Existing</a>
+<a  class="btn btn-info btn-lg" href="${flowExecutionUrl}&_eventId_New">New</a></center>
 <!-- <a class="btn btn-info btn-sm" href=${pageContext.request.contextPath}/user/existing>EXISTING</a>-->
 </body>
 </html>

@@ -59,6 +59,10 @@ public class UserController {
 	{String uname = user.getName();
 	User user1 = userDAO.getuserbyname(uname);
 	Cart cart=cartDAO.getcartbyuserid(user1.getId());
+	List<CartItems> cartitems=cart.getCartitems();
+	for(CartItems items:cartitems) {
+		
+	}
 	cart.setCartitems(new ArrayList<CartItems>());
 	cart.setGrandtotal(0);
 	cartDAO.saveorupdatecart(cart);
@@ -76,6 +80,14 @@ public class UserController {
 		model.addAttribute("addresses",user1.getAddresses());
 		return "listaddress";
 	}
+	@RequestMapping("/viewprofile")
+	public String profiledetails(Principal user,Model model)
+	{
+		String uname = user.getName();
+		User user1 = userDAO.getuserbyname(uname);
+		model.addAttribute("user2",user1);
+		return "userprofile";
+	}
 @RequestMapping("/cart")
 public String cart(Principal user, Model model)
 {
@@ -89,6 +101,22 @@ public String cart(Principal user, Model model)
 	model.addAttribute("cartitemslist", cart.getCartitems());
 	return "listcartitems";
 
+}
+@RequestMapping("/removeitem/{id}")
+public String removecartitem(Principal user, Model model, @PathVariable("id") int id) {
+	CartItems cartitem=cartitemsDAO.getcartitembyproductid(id);
+	System.out.println(cartitem.getProduct().getPname());
+	String uname = user.getName();
+	System.out.println(uname);
+	User user1 = userDAO.getuserbyname(uname);
+	//System.out.println(userid);
+	Cart cart;
+	cart = cartDAO.getcartbyuserid(user1.getId());
+	model.addAttribute("cart",cart);
+	cart.getCartitems().remove(cartitem);
+	List<CartItems> cartitems=cart.getCartitems();
+	model.addAttribute("cartitemslist", cartitems);
+	return "listcartitems";
 }
 	@RequestMapping("/addtocart/{id}")
 	public String savetocartitems(@ModelAttribute("cartitems") CartItems cartitems, @PathVariable("id") int id,
@@ -125,13 +153,13 @@ public String cart(Principal user, Model model)
 		for(CartItems items:itemsincart) {
 			System.out.println(items.getProduct().getPname());
 			if(items.getProduct().getId()==id)
-			{  
-				items.setQuantity(items.getQuantity()+cartitems.getQuantity());
+			{  int q=items.getQuantity();
+				items.setQuantity(cartitems.getQuantity());
 			    int cost=Integer.parseInt(items.getProduct().getCost());
 			    items.setSubtotal(items.getQuantity()*cost);
 				
 			    cart.setCartitems(itemsincart);
-			    cart.setGrandtotal((cartitems.getQuantity()*cost)+cart.getGrandtotal());
+			    cart.setGrandtotal((cartitems.getQuantity()*cost)+cart.getGrandtotal()-(q*cost));
 				cartDAO.saveorupdatecart(cart);
 				count=1;
 				break;

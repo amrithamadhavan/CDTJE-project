@@ -59,7 +59,7 @@ height:50;
 
 <div class="container">
   
-  
+  <h2><center><B>LOGIN</B></center></h2>
   <form class="form-horizontal" action="login" method="post" >
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -71,7 +71,7 @@ height:50;
     </div>
     <br>
    <div id="class1">
- <input type="submit" value="login" class="btn btn-success">
+ <input type="submit" value="login" class="btn btn-lg btn-success">
  </div>
 </form>
 <br>

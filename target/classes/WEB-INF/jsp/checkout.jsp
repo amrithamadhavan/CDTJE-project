@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Proceed to Checkout</h1>
-<a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/memberShip">checkout</a>
+<br><br><br><br>
+<center><h1>Proceed to Checkout..!</h1><br>
+<a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/memberShip">checkout</a></center>
 </body>
 </html>

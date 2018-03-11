@@ -33,13 +33,12 @@ width:400
 <body>
 <!-- <button class="btn btn-danger"><a href="<c:url value='/display' />">Display</a></button>-->
 	
-	
+	<h2>Edit Category Details</h2>
 	<form:form action="${pageContext.request.contextPath}/admin/editcategory" modelAttribute="category">
 		<table class="table">
-		<tr class="form-group">
-				<td>category id:</td>
-				<td><form:input value="${categoryList.id}" class="form-control" path="id"/></td>
-			</tr>
+		
+				<form:input value="${categoryList.id}" type="hidden" class="form-control" path="id"/></td>
+			
 		
 			<tr class="form-group">
 				<td>category name:</td>

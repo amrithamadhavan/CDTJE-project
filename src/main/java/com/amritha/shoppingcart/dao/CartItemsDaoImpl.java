@@ -31,6 +31,8 @@ public CartItems getcartitembyproductid(int id) {
 	 try {
 			return sessionFactory.getCurrentSession().createQuery("from CartItems where PRODUCT_ID='"+id+"'",CartItems.class).getSingleResult();}
 		 catch(Exception ex)
-			{return null;}
+			{
+			 System.out.println(ex);
+			 System.out.println("error");return null;}
 }
 }

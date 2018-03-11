@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Thank You..!your order has been placed successfully..!</h1>
-<a class="btn btn-info btn-sm" href=${flowExecutionUrl}&_eventId_ok>ok</a>
+<br><br><br>
+<center><h1>Thank You..!your order has been placed successfully..!</h1><br>
+<a class="btn btn-info btn-lg" href=${flowExecutionUrl}&_eventId_ok>ok</a></center>
 </body>
 </html>

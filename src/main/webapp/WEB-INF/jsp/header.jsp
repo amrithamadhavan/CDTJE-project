@@ -21,11 +21,7 @@
      
     <!-- <li><a href="${pageContext.request.contextPath}/loginform">LOGIN</a></li>-->
      <!-- <li><a href="${pageContext.request.contextPath}/register">REGISTER</a></li>-->
-       <li><a href="${pageContext.request.contextPath}/user/product">Productdetails</a></li>
-     <!-- <li><a href="${pageContext.request.contextPath}/uploadform">Upload Image</a></li>-->  
-      <li><a href="${pageContext.request.contextPath}/admin/addcategory">Categoryadd</a>
-       <li><a href="${pageContext.request.contextPath}/admin/categorysearch">Categorysearch</a>
-      <li><a href="${pageContext.request.contextPath}/admin/dispajax">Admin</a>
+      
       </ul>
       <security:authorize access="isAnonymous()">
       
@@ -36,7 +32,15 @@
     </ul>
     </security:authorize>
     <security:authorize access="isAuthenticated()"> 
+     <ul class="nav navbar-nav">
+     <li><a href="${pageContext.request.contextPath}/user/product">Productdetails</a></li>
+     <!-- <li><a href="${pageContext.request.contextPath}/uploadform">Upload Image</a></li>-->  
+      <li><a href="${pageContext.request.contextPath}/admin/addcategory">Categoryadd</a>
+       <li><a href="${pageContext.request.contextPath}/admin/categorysearch">Categorysearch</a>
+      <li><a href="${pageContext.request.contextPath}/admin/dispajax">Admin</a>
+      </ul>
     <ul class="nav navbar-nav navbar-right">
+    <li><a href="${pageContext.request.contextPath}/user/viewprofile" class="btn btn-md"> <span class="glyphicon glyphicon-user"></span>ViewProfile</a>
      <li><a href="${pageContext.request.contextPath}/user/cart" class="btn btn-md">
           <span class="glyphicon glyphicon-shopping-cart"></span> Cart
         </a></li>

@@ -7,12 +7,12 @@
  <title>Image File Upload</title>  
  </head>  
  <body>  
-<h1>File Upload Example - JavaTpoint</h1>  
+<h1>Upload your image</h1>  
   
 
 <form method="post" action="${pageContext.request.contextPath}/admin/savefile" enctype="multipart/form-data">  
-<p><label for="image">Choose Image</label></p>  
-<p><input name="file" id="fileToUpload" type="file" /></p>  
+<p><label for="image">Choose Image</label></p> <br>
+<p><input name="file" id="fileToUpload" type="file" /></p><br><br>  
 <p><input type="submit" value="Upload"></p>  
 </form>  
 </body>  

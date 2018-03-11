@@ -23,59 +23,40 @@
 <style>	
 	img {
     vertical-align: middle;
-    width: 200px;
-    height:200px;
-    margin-left: 20px;
-    
-}
+    width: 250px;
+    height:250px;
+   }
+   .form-horizontal .form-group{
+   margin-right: -15px;
+   margin-left: -15px;
+   padding-left: 550px;
+   padding-right: 310px;
+   }
 	</style>
   </head>
   
 <body>
-
-<form:form action="${pageContext.request.contextPath}/user/addtocart/${product.id}" modelAttribute="cartitems">
-
-		<div style="float:left">
-		<table class="table" style="margin-left: 30px">
-			<tr class="form-group">
-				<td>Product name:</td>
-				<td>${product.pname}</td>
-			</tr>
-			<tr class="form-group">
-				<td>Product Description:</td>
-				<td>${product.description}</td>
-			</tr>
-			<tr class="form-group">
-				<td>Product Price:</td>
-				<td>${product.cost}</td>
-			</tr>
-			<tr class="form-group">
-				<td>Category:</td>
-				<td>${product.category.cname}
-				    </td>
-			</tr>
-			<!-- <tr class="form-group">
-				<td>image:</td>
-				<td>
-			<img src="${pageContext.request.contextPath}/resources/images/${product.id}.jpg"></td>
-			</tr>-->
-			<tr class="form-group">
-				<td>quantity:</td>
-				<td><form:input type="text" name="quantity"  class="form-control" path="quantity"/></td>
-			    
-			</tr>
-			
-			<tr>
-				<td><input type="submit" value="Add To Cart" class="btn btn-primary"></td>
+<h1><center>Product Description</center></h1><br>
+<form:form class="form-horizontal" action="${pageContext.request.contextPath}/user/addtocart/${product.id}" modelAttribute="cartitems">
+ <center><img src="${pageContext.request.contextPath}/resources/images/${product.id}.jpg">
+		
+				<h4><label>ProductName : ${product.pname}</label></h4>
+			<h4><label>Product Description : ${product.description}</label></h4>
+			<h4><label>Product Price : ${product.cost}</label></h4>
 				
-			</tr>
+			<h4><label>Category : ${product.category.cname}</label></h4>
+				    
 			
-		</table>
-		</div>
-		<div style="float:left">
-       <img src="${pageContext.request.contextPath}/resources/images/${product.id}.jpg">
-		</div>
-	</form:form>
+			<div class="form-group">
+				<h4><label class="control-label col-sm-2 input-lg">Quantity:</label>
+				<div class="col-sm-5">
+				<form:input type="text" class="form-control input-lg" name="quantity"   value="1" path="quantity"/></h4>
+			    
+			</div>
+			
+	        </div>		
+			<input type="submit" value="Add To Cart" class="btn btn-primary"></center>
+			</form:form>
 	
 	
 

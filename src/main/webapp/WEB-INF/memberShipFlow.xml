@@ -5,21 +5,37 @@
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
  
 	<!-- Executed when webFlow is triggered -->
-	<input name="id"/>
+	<var name="address" class="com.amritha.shoppingcart.model.Address"></var>
+	<!-- <var name="bindingresult" class="org.springframework.validation.BindingResult"></var>-->
 	<on-start>
 	<!-- demohandler is java class available through annotated Demohandler.java class.here we are calling it’s initFlow() method. -->
 	  <evaluate expression="demohandler.initFlow()" result="flowScope.user"/>
+	<!--   <evaluate expression="demohandler.newaddressinstance()" result="flowScope.address"/>-->
 	</on-start>
  
 	 <!-- if not specified the first view state is the starting state -->
 	<view-state id="start" view="payment">
+	 
 	   <transition on="Existing" to="validate"/>
+	   <transition on="New" to="validate2"/>
 	</view-state>
  
 	<action-state id="validate">
 		<evaluate expression="demohandler.validateDetails(user,messageContext)"></evaluate>
 		<transition on="success" to="confirmDetails" />
 		<transition on="failure" to="start" />
+	</action-state>
+	
+	<view-state id="validate2" view="address1" model="address">
+
+	
+		<transition on="Deliver" to="savenewaddress" />
+		
+	</view-state>
+	<action-state id="savenewaddress">
+		<evaluate expression="demohandler.saveaddress(user,address,messageContext)"></evaluate>
+		<transition on="success" to="done" />
+		<!-- <transition on="failure" to="start" />-->
 	</action-state>
  
 	<view-state id="confirmDetails" view="listaddress" model="flowScope.user">
@@ -30,12 +46,12 @@
 	</view-state>
 	
  <action-state id="function">
-		<evaluate expression="demohandler.getDetails(id,messageContext)"></evaluate>
+		<evaluate expression="demohandler.getDetails(messageContext)"></evaluate>
 		<transition on="success" to="done" />
 		<transition on="failure" to="start" />
 	</action-state>
 	
-	<view-state id="done" view="orderplaced" model="flowscope.address">
+	<view-state id="done" view="orderplaced" model="flowScope.address">
 	<transition on="ok" to="done1" />
 	</view-state>
 	<end-state id="done1" view="index"></end-state>
